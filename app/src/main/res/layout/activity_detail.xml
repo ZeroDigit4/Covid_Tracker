@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFEA00"
+    android:id="@+id/lDetail"
     tools:context=".DetailActivity">
+<pl.droidsonroids.gif.GifImageView
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleY="8"
+    android:src="@drawable/bg" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/texture"
+        android:rotationX="60"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="310dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="texture.json"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/black"
+        android:id="@+id/cardViewStats">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/countryDetail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="-20dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="detail.json"/>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,6 +57,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -33,7 +75,11 @@
             android:text="@string/_0"
 
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -41,7 +87,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -54,6 +100,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -71,7 +118,11 @@
             android:text="@string/_0"
 
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -79,7 +130,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -92,6 +143,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -109,7 +161,11 @@
             android:text="@string/_0"
 
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -117,7 +173,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -130,6 +186,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -145,9 +202,12 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="casual"
             android:text="@string/_0"
-
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -155,7 +215,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FBFBFB"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -168,6 +228,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -183,9 +244,12 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="casual"
             android:text="@string/_0"
-
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -193,7 +257,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -206,6 +270,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -221,9 +286,12 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="casual"
             android:text="@string/_0"
-
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -231,7 +299,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -244,6 +312,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -259,9 +328,12 @@
             android:layout_alignParentEnd="true"
             android:fontFamily="casual"
             android:text="@string/_0"
-
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -269,7 +341,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#FFFFFF"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
@@ -282,6 +354,7 @@
         android:layout_marginBottom="10dp">
 
         <TextView
+            android:textColor="#1DE9B6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
@@ -298,7 +371,11 @@
             android:fontFamily="casual"
             android:text="@string/_0"
             android:textAlignment="textEnd"
-            android:textColor="@color/color_one"
+            android:shadowColor="#DA00FF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="1.6"
+            android:textColor="#FFEA00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -306,9 +383,11 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#FFEA00"
+        android:background="#F8F8F8"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
 
 </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

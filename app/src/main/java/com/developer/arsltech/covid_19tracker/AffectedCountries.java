@@ -3,6 +3,7 @@ package com.developer.arsltech.covid_19tracker;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -12,20 +13,19 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -53,9 +53,12 @@ public class AffectedCountries extends AppCompatActivity {
 
         edtSearch = findViewById(R.id.edtSearch);
         listView = findViewById(R.id.listView);
-        lottieAnimationView = findViewById(R.id.animation);
-
+        lottieAnimationView = findViewById(R.id.progress);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Affected Countries");
+        findViewById(R.id.country).setVisibility(View.GONE);
+        YoYo.with(Techniques.FadeIn)
+                .duration(1000)
+                .playOn(findViewById(R.id.lCountries));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -133,9 +136,7 @@ public class AffectedCountries extends AppCompatActivity {
                         lottieAnimationView.cancelAnimation();
                         lottieAnimationView.setVisibility(View.GONE);
 
-
-
-
+                        animation();
 
 
                     } catch (JSONException e) {
@@ -155,6 +156,16 @@ public class AffectedCountries extends AppCompatActivity {
         requestQueue.add(request);
 
 
+    }
+
+    private void animation() {
+          new Handler().postDelayed(() ->
+        {
+            YoYo.with(Techniques.Tada)
+                    .duration(500)
+                    .playOn(findViewById(R.id.country));
+            findViewById(R.id.country).setVisibility(View.VISIBLE);
+        }, 300);
     }
 
 }

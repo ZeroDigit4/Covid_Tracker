@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">COVID-19 \nReal-Time Tracker</string>
+    <string name="app_name">COVID-19 Real-Time Tracker</string>
     <string name="search">Search</string>
     <string name="country">Country</string>
     <string name="_0">0</string>
@@ -16,4 +16,6 @@
     <string name="affected_countries">Affected Countries</string>
     <string name="track_countries">Track countries</string>
     <string name="country_name">Country Name</string>
+    <string name="covid">COVID</string>
+    <string name="tracker">TRACKER</string>
 </resources>

@@ -4,27 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00B0FF">
-
-    <EditText
-        android:id="@+id/edtSearch"
+    android:background="#000000"
+    android:id="@+id/lCountries">
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/background"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/edittext_shadow"
-        android:drawableStart="@drawable/ic_search_black_24dp"
-        android:drawablePadding="15dp"
-        android:inputType="textVisiblePassword|textNoSuggestions"
-        android:fontFamily="casual"
-        android:hint="@string/search"
-        android:maxLines="1"
-        android:paddingStart="10dp"
-        android:singleLine="true"
-        android:textStyle="normal"
-        tools:ignore="Autofill,RtlSymmetry" />
+        android:layout_height="match_parent"
+        android:scaleY="8"
+        android:src="@drawable/bg" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/texture"
+        android:rotationX="60"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="310dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="texture.json"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="-10dp"
+        android:orientation="horizontal">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/search"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="search.json"/>
+
+        <com.cielyang.android.clearableedittext.ClearableEditText
+            android:id="@+id/edtSearch"
+            android:layout_width="225dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center|start"
+            android:drawablePadding="15dp"
+            android:fontFamily="@font/bangers"
+            android:hint="@string/search"
+            android:inputType="textVisiblePassword|textNoSuggestions"
+            android:maxLines="1"
+            android:background="@drawable/text_bg"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:shadowColor="#00FFBF"
+            android:textColorHighlight="#00FFBF"
+            android:textColorHint="#2E3A37"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:textColorLink="#DD4312"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:clearIconDrawWhenFocused="false"
+            tools:ignore="Autofill,RtlSymmetry" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/black"
+        android:id="@+id/cardViewCountries">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/country"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="-30dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="country.json"/>
+
 
     <ListView
         android:id="@+id/listView"
@@ -35,20 +93,20 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:divider="@android:color/background_dark"
+        android:divider="#FFFFFF"
         android:dividerHeight="2dp"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true" />
+
+    </androidx.cardview.widget.CardView>
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation"
+        android:id="@+id/progress"
         android:layout_height="400dp"
         android:layout_width="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_centerInParent="true"
+        android:elevation="10dp"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="covid_nineteen.json"
+        app:lottie_fileName="progress.json"
         />
+
 </RelativeLayout>

@@ -4,9 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9100"
-    android:overScrollMode="always"
+    android:id="@+id/lMain"
     tools:context=".MainActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleY="8"
+        android:src="@drawable/bg" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/texture"
+        android:rotationX="60"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="310dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="texture.json"/>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
@@ -17,6 +34,51 @@
         android:layout_marginRight="20dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/chart_icon"
+            android:onClick="chartBorderToggle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="63dp"
+            android:elevation="11dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="chart_icon.json" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/success"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="105dp"
+            android:elevation="11dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="success.json" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/fail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="105dp"
+            android:elevation="11dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="fail.json" />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/chart_border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:elevation="11dp"
+            android:scaleX="3.2"
+            android:visibility="gone"
+            android:src="@drawable/border" />
+
+
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe"
@@ -24,11 +86,14 @@
             android:layout_height="wrap_content">
 
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#92C7DF"
-                android:weightSum="2">
+                android:background="#000000"
+                android:weightSum="2"
+           android:orientation="horizontal">
+
 
                 <org.eazegraph.lib.charts.PieChart
                     android:id="@+id/piechart"
@@ -40,7 +105,7 @@
                     android:layout_weight="1"
                     android:alwaysDrawnWithCache="true"
                     android:padding="6dp"
-                    app:egInnerPaddingColor="@color/innerPadding" />
+                    app:egInnerPaddingColor="#000000" />
 
                 <LinearLayout
                     android:id="@+id/label"
@@ -52,6 +117,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/first"
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
                         android:gravity="center_vertical">
@@ -62,6 +128,7 @@
                             android:background="@color/cases" />
 
                         <TextView
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -72,6 +139,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/second"
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
                         android:layout_marginTop="5dp"
@@ -83,6 +151,7 @@
                             android:background="@color/recovered" />
 
                         <TextView
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -93,6 +162,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/third"
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
                         android:layout_marginTop="5dp"
@@ -104,6 +174,7 @@
                             android:background="@color/deaths" />
 
                         <TextView
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -114,6 +185,8 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/fourth"
+
                         android:layout_width="match_parent"
                         android:layout_height="15dp"
                         android:layout_marginTop="5dp"
@@ -125,6 +198,7 @@
                             android:background="@color/active" />
 
                         <TextView
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -135,12 +209,14 @@
                     </LinearLayout>
                 </LinearLayout>
 
+
             </LinearLayout>
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -151,57 +227,95 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         app:cardCornerRadius="5dp"
+        android:id="@+id/cardViewStats"
         app:cardElevation="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#92C7DF">
+            android:background="#000000">
+
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/stats_border"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleX="1.6"
+                android:visibility="gone"
+                android:src="@drawable/border" />
+
+
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animation"
+                android:id="@+id/progress"
                 android:layout_width="400dp"
                 android:layout_height="400dp"
                 android:layout_centerInParent="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="covid_nineteen.json" />
+                app:lottie_fileName="progress.json" />
 
 
             <ScrollView
+                android:scrollbarThumbVertical="@drawable/scroll_thumb"
                 android:id="@+id/scrollStats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:overScrollMode="always"
                 android:visibility="gone"
+                android:fadeScrollbars="true"
+                android:scrollbarStyle="outsideOverlay"
                 tools:ignore="NestedScrolling">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="casual"
-                        android:text="@string/global_stats"
-                        android:textAllCaps="true"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
+                        android:layout_marginBottom="-139dp"
+                        android:orientation="horizontal">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/top_stats"
+                            android:layout_width="600dp"
+                            android:layout_height="300dp"
+                            android:translationX="-130dp"
+                            android:translationY="-100dp"
+                            android:onClick="topStatsBorderToggle"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="top_stats.json"
+                            app:lottie_loop="true" />
+
+                        <pl.droidsonroids.gif.GifImageView
+                            android:id="@+id/global"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="120dp"
+                            android:src="@drawable/global" />
+                        <pl.droidsonroids.gif.GifImageView
+                            android:id="@+id/stats"
+                            android:layout_width="300dp"
+                            android:layout_height="200dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="100dp"
+                            android:src="@drawable/stats" />
+
+
+                    </RelativeLayout>
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/line"
+                        android:layout_width="600dp"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="-200dp"
+                        android:layout_marginBottom="-100dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="line.json"
+                        app:lottie_loop="true" />
+
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -212,6 +326,9 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbCases"
+                            android:textStyle="bold"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -220,26 +337,32 @@
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
+                            android:paddingEnd="3dp"
                             android:id="@+id/tvCases"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:fontFamily="casual"
                             android:text="@string/_0"
-
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view1"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -250,6 +373,8 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbRecovered"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -258,6 +383,7 @@
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
+                            android:paddingEnd="3dp"
                             android:id="@+id/tvRecovered"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -265,18 +391,24 @@
                             android:fontFamily="casual"
                             android:text="@string/_0"
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view2"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -287,6 +419,8 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbCritical"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -295,26 +429,32 @@
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
+                            android:paddingEnd="3dp"
                             android:id="@+id/tvCritical"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:fontFamily="casual"
                             android:text="@string/_0"
-
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view3"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -325,6 +465,8 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbActive"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -339,20 +481,26 @@
                             android:layout_alignParentEnd="true"
                             android:fontFamily="casual"
                             android:text="@string/_0"
-
+                            android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view4"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -363,6 +511,8 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbTodayCases"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -371,26 +521,32 @@
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
+                            android:paddingEnd="3dp"
                             android:id="@+id/tvTodayCases"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:fontFamily="casual"
                             android:text="@string/_0"
-
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view5"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -401,6 +557,8 @@
                         android:layout_marginBottom="10dp">
 
                         <TextView
+                            android:id="@+id/lbTotalDeaths"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="casual"
@@ -416,32 +574,54 @@
                             android:layout_alignParentEnd="true"
                             android:fontFamily="sans-serif-light"
                             android:text="@string/_0"
-
+                            android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
                     <View
+                        android:id="@+id/view6"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+                        android:background="#FFFFFF" />
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="-197dp">
+
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/bot_stats"
+                            android:layout_width="300dp"
+                            android:onClick="botStatsBorderToggle"
+                            android:layout_height="300dp"
+                            android:layout_marginEnd="0dp"
+                            android:elevation="-4dp"
+                            android:translationX="140dp"
+                            android:translationY="-85dp"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="bot_stats.json"
+                            app:lottie_loop="true" />
 
                         <TextView
+                            android:id="@+id/lbTodayDeaths"
+                            android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="casual"
                             android:text="@string/today_deaths"
                             android:textSize="18sp"
@@ -449,37 +629,40 @@
 
                         <TextView
                             android:id="@+id/tvTodayDeaths"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:fontFamily="casual"
-                            android:text="@string/_0"
-
-                            android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="25dp"
+                            android:fontFamily="casual"
+                            android:text="@string/_0"
+                            android:paddingEnd="3dp"
+                            android:textAlignment="textEnd"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:ignore="RelativeOverlap,RtlSymmetry" />
+
+                        <View
+                            android:id="@+id/view7"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginRight="20dp"
+                            android:background="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/lbAffectedCountries"
+                            android:textColor="#1DE9B6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="60dp"
                             android:fontFamily="sans-serif-light"
                             android:text="@string/affected_countries"
                             android:textSize="18sp"
@@ -487,24 +670,36 @@
 
                         <TextView
                             android:id="@+id/tvAffectedCountries"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
+                            android:paddingEnd="3dp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginEnd="25dp"
                             android:fontFamily="casual"
                             android:text="@string/_0"
                             android:textAlignment="textEnd"
-                            android:textColor="#7442E3"
+                            android:shadowColor="#DA00FF"
+                            android:shadowDx="4"
+                            android:shadowDy="4"
+                            android:shadowRadius="1.6"
+                            android:textColor="#FFEA00"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="RelativeOverlap,RtlSymmetry" />
+
+                        <View
+                            android:id="@+id/view8"
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_marginTop="100dp"
+                            android:background="#FFFFFF" />
+
 
                     </RelativeLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="#FF9100" />
+
+
 
                 </LinearLayout>
 
@@ -513,25 +708,63 @@
         </RelativeLayout>
 
 
-    </androidx.cardview.widget.CardView>
 
+
+    </androidx.cardview.widget.CardView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/btn_bg"
+        android:onClick="buttonEffect"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp"
+        android:layout_marginStart="205dp"
+        android:layout_marginTop="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="btn_bg.json"
+        app:lottie_loop="true" />
 
     <Button
         android:id="@+id/btnTrack"
-        android:layout_width="match_parent"
+
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="#1DE9B6"
+        android:background="@drawable/button_sel"
         android:fontFamily="@font/advent_pro_bold"
         android:onClick="goTrackCountries"
         android:padding="5dp"
         android:text="@string/track_countries"
-        android:textColor="@android:color/black"
+        android:textColor="@drawable/tx_button_sel"
         android:textSize="18sp"
+        android:layout_above="@+id/btn_bg"
         android:textStyle="bold" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/line_button"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="11dp"
+        android:layout_marginEnd="100dp"
+        android:visibility="invisible"
+        app:lottie_fileName="line2.json" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/line_button_bg"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="11dp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:lottie_fileName="line_2.json" />
+
+
 
 </RelativeLayout>

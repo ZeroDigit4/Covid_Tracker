@@ -1,15 +1,19 @@
 package com.developer.arsltech.covid_19tracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.Objects;
 
@@ -26,16 +30,16 @@ public class DetailActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setNavigationBarColor(this.getResources().getColor(android.R.color.black));
         }
-
+        animation();
         Intent intent = getIntent();
         int positionCountry = intent.getIntExtra("position", 0);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Details of "+AffectedCountries.countryModelsList.get(positionCountry).getCountry());
+        YoYo.with(Techniques.FadeIn)
+                .duration(1000)
+                .playOn(findViewById(R.id.lDetail));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
         tvCountry = findViewById(R.id.tvCountry);
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
@@ -61,5 +65,15 @@ public class DetailActivity extends AppCompatActivity {
         if(item.getItemId()==android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    private void animation() {
+        new Handler().postDelayed(() ->
+        {
+            YoYo.with(Techniques.Tada)
+                    .duration(500)
+                    .playOn(findViewById(R.id.countryDetail));
+            findViewById(R.id.country).setVisibility(View.VISIBLE);
+        }, 100);
     }
 }
