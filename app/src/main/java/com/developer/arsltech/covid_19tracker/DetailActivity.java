@@ -30,6 +30,7 @@ public class DetailActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setNavigationBarColor(this.getResources().getColor(android.R.color.black));
         }
+        findViewById(R.id.countryDetail).setVisibility(View.GONE);
         animation();
         Intent intent = getIntent();
         int positionCountry = intent.getIntExtra("position", 0);
@@ -73,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
             YoYo.with(Techniques.Tada)
                     .duration(500)
                     .playOn(findViewById(R.id.countryDetail));
-            findViewById(R.id.country).setVisibility(View.VISIBLE);
+            findViewById(R.id.countryDetail).setVisibility(View.VISIBLE);
         }, 100);
     }
 }
