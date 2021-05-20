@@ -5,24 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lMain"
+    android:background="#000000"
     tools:context=".MainActivity">
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="3dp">
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleY="8"
+        android:scaleType="centerCrop"
         android:src="@drawable/bg" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/texture"
-        android:rotationX="60"
+        android:layout_marginTop="200dp"
+        android:rotationX="65"
+        android:scaleType="fitEnd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="310dp"
+        android:rotationY="20"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         app:lottie_fileName="texture.json"/>
+</FrameLayout>
 
 
     <androidx.cardview.widget.CardView
@@ -33,51 +40,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#000000"
         app:cardElevation="10dp">
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/chart_icon"
-            android:onClick="chartBorderToggle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="62dp"
-            android:layout_marginTop="63dp"
-            android:elevation="11dp"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="chart_icon.json" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/success"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:visibility="gone"
-            android:layout_marginStart="235dp"
-            android:layout_marginTop="105dp"
-            android:elevation="11dp"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="success.json" />
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/fail"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:visibility="gone"
-            android:layout_marginStart="235dp"
-            android:layout_marginTop="105dp"
-            android:elevation="11dp"
-            app:lottie_loop="true"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="fail.json" />
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/chart_border"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:elevation="11dp"
-            android:scaleX="3.2"
-            android:visibility="gone"
-            android:src="@drawable/border" />
-
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -86,26 +50,79 @@
             android:layout_height="wrap_content">
 
 
-
-            <LinearLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/chart_border"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#000000"
-                android:weightSum="2"
-           android:orientation="horizontal">
+                android:layout_centerInParent="true"
+                android:elevation="11dp"
+                android:scaleX="3.2"
+                android:visibility="gone"
+                android:src="@drawable/border" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/success"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:elevation="11dp"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="success.json" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/fail"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:elevation="11dp"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="fail.json" />
+
+            <LinearLayout
+                android:elevation="9dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="1.5"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
 
-                <org.eazegraph.lib.charts.PieChart
+            <FrameLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/chart_icon"
+                    android:onClick="chartBorderToggle"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:elevation="11dp"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="chart_icon.json" />
+
+
+                          <org.eazegraph.lib.charts.PieChart
                     android:id="@+id/piechart"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                              android:layout_gravity="center"
+                    android:layout_height="wrap_content"
                     android:alwaysDrawnWithCache="true"
                     android:padding="6dp"
                     app:egInnerPaddingColor="#000000" />
+            </FrameLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/label"
@@ -211,6 +228,7 @@
 
 
             </LinearLayout>
+        </RelativeLayout>
 
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -228,21 +246,73 @@
         android:layout_marginRight="20dp"
         app:cardCornerRadius="5dp"
         android:id="@+id/cardViewStats"
+        app:cardBackgroundColor="#000000"
         app:cardElevation="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/stats_border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleX="1.6"
+            android:visibility="gone"
+            android:src="@drawable/border" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-139dp"
+                android:orientation="horizontal"
+                android:id="@+id/top_stats_view">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/top_stats"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:scaleType="centerCrop"
+                    android:layout_height="300dp"
+                    android:translationX="-130dp"
+                    android:translationY="-100dp"
+                    android:onClick="topStatsBorderToggle"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="top_stats.json"
+                    app:lottie_loop="true" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="-25dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="line.json"
+                    app:lottie_loop="true" />
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/global"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:src="@drawable/global" />
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/stats"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="100dp"
+                    android:src="@drawable/stats" />
+
+
+            </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#000000">
+            android:layout_height="match_parent">
 
-
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/stats_border"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleX="1.6"
-                android:visibility="gone"
-                android:src="@drawable/border" />
 
 
 
@@ -255,6 +325,7 @@
                 app:lottie_fileName="progress.json" />
 
 
+
             <ScrollView
                 android:scrollbarThumbVertical="@drawable/scroll_thumb"
                 android:id="@+id/scrollStats"
@@ -264,58 +335,25 @@
                 android:fadeScrollbars="true"
                 android:scrollbarStyle="outsideOverlay"
                 tools:ignore="NestedScrolling">
-
-
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/bot_stats"
+                        android:layout_width="300dp"
+                        android:onClick="botStatsBorderToggle"
+                        android:layout_height="200dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:scaleType="fitEnd"
+                        android:layout_marginEnd="-120dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="bot_stats.json"
+                        app:lottie_loop="true" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="-139dp"
-                        android:orientation="horizontal">
-
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/top_stats"
-                            android:layout_width="600dp"
-                            android:layout_height="300dp"
-                            android:translationX="-130dp"
-                            android:translationY="-100dp"
-                            android:onClick="topStatsBorderToggle"
-                            app:lottie_autoPlay="true"
-                            app:lottie_fileName="top_stats.json"
-                            app:lottie_loop="true" />
-
-                        <pl.droidsonroids.gif.GifImageView
-                            android:id="@+id/global"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="120dp"
-                            android:src="@drawable/global" />
-                        <pl.droidsonroids.gif.GifImageView
-                            android:id="@+id/stats"
-                            android:layout_width="300dp"
-                            android:layout_height="200dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginStart="100dp"
-                            android:src="@drawable/stats" />
-
-
-                    </RelativeLayout>
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/line"
-                        android:layout_width="600dp"
-                        android:layout_height="300dp"
-                        android:layout_marginTop="-200dp"
-                        android:layout_marginBottom="-100dp"
-                        app:lottie_autoPlay="true"
-                        app:lottie_fileName="line.json"
-                        app:lottie_loop="true" />
-
-
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -334,7 +372,7 @@
                             android:fontFamily="casual"
                             android:text="@string/cases"
                             android:textSize="18sp"
-                            tools:ignore="RelativeOverlap" />
+                            tools:ignore="RelativeOverlap,TooDeepLayout" />
 
                         <TextView
                             android:paddingEnd="3dp"
@@ -595,46 +633,31 @@
                         android:layout_marginRight="20dp"
                         android:background="#FFFFFF" />
 
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="-197dp">
-
-
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/bot_stats"
-                            android:layout_width="300dp"
-                            android:onClick="botStatsBorderToggle"
-                            android:layout_height="300dp"
-                            android:layout_marginEnd="0dp"
-                            android:elevation="-4dp"
-                            android:translationX="140dp"
-                            android:translationY="-85dp"
-                            app:lottie_autoPlay="true"
-                            app:lottie_fileName="bot_stats.json"
-                            app:lottie_loop="true" />
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginBottom="10dp">
 
                         <TextView
                             android:id="@+id/lbTodayDeaths"
                             android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:layout_marginTop="10dp"
                             android:fontFamily="casual"
+                            android:fontFeatureSettings="casual"
                             android:text="@string/today_deaths"
                             android:textSize="18sp"
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
                             android:id="@+id/tvTodayDeaths"
-                            android:layout_width="wrap_content"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="25dp"
-                            android:fontFamily="casual"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/_0"
                             android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
@@ -645,39 +668,44 @@
                             android:textColor="#FFEA00"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            tools:ignore="RelativeOverlap,RtlSymmetry" />
+                            tools:ignore="RtlSymmetry" />
 
-                        <View
-                            android:id="@+id/view7"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="50dp"
-                            android:layout_marginRight="20dp"
-                            android:background="#FFFFFF" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/view7"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#FFFFFF" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginBottom="10dp">
 
                         <TextView
                             android:id="@+id/lbAffectedCountries"
                             android:textColor="#1DE9B6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="25dp"
-                            android:layout_marginTop="60dp"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="casual"
+                            android:fontFeatureSettings="casual"
                             android:text="@string/affected_countries"
                             android:textSize="18sp"
                             tools:ignore="RelativeOverlap" />
 
                         <TextView
                             android:id="@+id/tvAffectedCountries"
-                            android:layout_width="match_parent"
-                            android:paddingEnd="3dp"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginTop="60dp"
-                            android:layout_marginEnd="25dp"
-                            android:fontFamily="casual"
+                            android:fontFamily="sans-serif-light"
                             android:text="@string/_0"
+                            android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
                             android:shadowColor="#DA00FF"
                             android:shadowDx="4"
@@ -686,48 +714,50 @@
                             android:textColor="#FFEA00"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            tools:ignore="RelativeOverlap,RtlSymmetry" />
-
-                        <View
-                            android:id="@+id/view8"
-                            android:layout_width="match_parent"
-                            android:layout_height="3dp"
-                            android:layout_marginTop="100dp"
-                            android:background="#FFFFFF" />
-
+                            tools:ignore="RtlSymmetry" />
 
                     </RelativeLayout>
 
+                    <View
+                        android:id="@+id/view8"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#FFFFFF" />
 
 
 
                 </LinearLayout>
+
+
+                </RelativeLayout>
 
             </ScrollView>
 
         </RelativeLayout>
 
 
+        </LinearLayout>
 
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/btn_bg"
         android:onClick="buttonEffect"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:elevation="10dp"
-        android:layout_marginStart="205dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="235dp"
         app:lottie_autoPlay="true"
         app:lottie_fileName="btn_bg.json"
         app:lottie_loop="true" />
 
     <Button
         android:id="@+id/btnTrack"
-
-        android:layout_width="200dp"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:paddingEnd="25dp"
+        android:paddingStart="15dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
@@ -742,7 +772,6 @@
         android:text="@string/track_countries"
         android:textColor="@drawable/tx_button_sel"
         android:textSize="18sp"
-        android:layout_above="@+id/btn_bg"
         android:textStyle="bold" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -752,7 +781,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="11dp"
         android:layout_marginEnd="100dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:lottie_fileName="line2.json" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -762,7 +791,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="11dp"
         android:layout_centerInParent="true"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:lottie_fileName="line_2.json" />
 
 

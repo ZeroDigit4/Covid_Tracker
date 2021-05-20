@@ -6,36 +6,49 @@
     android:layout_height="match_parent"
     android:background="#000000"
     tools:context=".SplashScreen">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:paddingEnd="2dp"
+        android:paddingStart="10dp"
+        android:orientation="vertical"
+        >
 
     <TextView
         android:id="@+id/covid"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_gravity="center|start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/shojumaru"
         android:text="@string/covid"
         android:textColor="#1DE9B6"
-        android:textSize="60sp" />
+        android:shadowColor="#774542"
+        android:textSize="50sp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
     <TextView
         android:id="@+id/tracker"
-        android:layout_marginTop="200dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_gravity="center|end"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="#1DE9B6"
-        android:textSize="60sp"
-        android:layout_marginStart="10dp"
+        android:textSize="50sp"
         android:fontFamily="@font/shojumaru"
         android:text="@string/tracker"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         />
 
+    </LinearLayout>
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="-45dp"
-        android:layout_marginBottom="-65dp"
+        android:layout_marginBottom="-40dp"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         app:lottie_fileName="splash.json"/>

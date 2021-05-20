@@ -6,61 +6,65 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:id="@+id/lCountries">
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/background"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleY="8"
-        android:src="@drawable/bg" />
+        android:paddingTop="3dp">
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/texture"
-        android:rotationX="60"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="310dp"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="texture.json"/>
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/texture"
+            android:layout_marginTop="200dp"
+            android:rotationX="65"
+            android:scaleType="fitEnd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rotationY="20"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="texture.json"/>
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="-10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="80dp"
         android:orientation="horizontal">
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/search"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
+        android:layout_height="80dp"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         app:lottie_fileName="search.json"/>
 
         <com.cielyang.android.clearableedittext.ClearableEditText
             android:id="@+id/edtSearch"
-            android:layout_width="225dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:clearIconDrawable="@drawable/clear_button"
             android:drawablePadding="15dp"
             android:fontFamily="@font/bangers"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="center"
             android:hint="@string/search"
             android:inputType="textVisiblePassword|textNoSuggestions"
             android:maxLines="1"
             android:background="@drawable/text_bg"
             android:singleLine="true"
-            android:textColor="#000000"
-            android:shadowColor="#00FFBF"
-            android:textColorHighlight="#00FFBF"
-            android:textColorHint="#2E3A37"
-            android:shadowDx="10"
-            android:shadowDy="10"
-            android:textColorLink="#DD4312"
+            android:textColor="#00FFBF"
+            android:textColorHighlight="#EDA18A"
+            android:textColorHint="#00FFBF"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:clearIconDrawWhenFocused="false"
+            app:clearIconDrawWhenFocused="true"
             tools:ignore="Autofill,RtlSymmetry" />
     </LinearLayout>
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -97,6 +101,7 @@
         android:layout_marginBottom="10dp"
         android:divider="#FFFFFF"
         android:dividerHeight="2dp"
+        android:adjustViewBounds="true"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true" />
 

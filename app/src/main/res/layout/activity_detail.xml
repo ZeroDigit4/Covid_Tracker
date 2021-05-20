@@ -5,23 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lDetail"
+    android:background="#000000"
     tools:context=".DetailActivity">
-<pl.droidsonroids.gif.GifImageView
-    android:id="@+id/background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scaleY="8"
-    android:src="@drawable/bg" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/texture"
-        android:rotationX="60"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="310dp"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="texture.json"/>
+        android:paddingTop="3dp">
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/texture"
+            android:layout_marginTop="200dp"
+            android:rotationX="65"
+            android:scaleType="fitEnd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rotationY="20"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="texture.json"/>
+    </FrameLayout>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +38,7 @@
         android:layout_centerInParent="true"
         app:cardCornerRadius="5dp"
         app:cardBackgroundColor="@color/black"
-        android:id="@+id/cardViewStats">
+        android:id="@+id/cardViewCountryDetail">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

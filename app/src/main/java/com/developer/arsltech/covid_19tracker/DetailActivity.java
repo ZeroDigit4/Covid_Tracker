@@ -75,6 +75,10 @@ public class DetailActivity extends AppCompatActivity {
                     .duration(500)
                     .playOn(findViewById(R.id.countryDetail));
             findViewById(R.id.countryDetail).setVisibility(View.VISIBLE);
-        }, 100);
+        }, 500);
+        new Handler().postDelayed(() ->
+                YoYo.with(Techniques.Shake)
+                        .duration(500)
+                        .playOn(findViewById(R.id.cardViewCountryDetail)), 400);
     }
 }

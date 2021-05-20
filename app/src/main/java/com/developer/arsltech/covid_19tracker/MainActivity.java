@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         chartIcon.setVisibility(View.GONE);
         pieChart.setVisibility(View.GONE);
         botStats.setVisibility(View.GONE);
+        findViewById(R.id.top_stats_view).setVisibility(View.GONE);
         track.setClickable(false);
         swipeRefreshLayout = findViewById(R.id.swipe);
         swipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 233, 182));
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 swipeRefreshLayout.setEnabled(true), 7000);
         swipeRefreshLayout.setOnRefreshListener(() -> {
             track.setClickable(false);
+            findViewById(R.id.top_stats_view).setVisibility(View.GONE);
             pieChart.clearChart();
             pieChart.setVisibility(View.GONE);
             chartIcon.setVisibility(View.GONE);
@@ -117,10 +119,16 @@ public class MainActivity extends AppCompatActivity {
         long t = System.currentTimeMillis();
         if (t - backPressedTime > 2000) {
             backPressedTime = t;
-            Toast.makeText(this, "Press back again to exit",
-                    Toast.LENGTH_SHORT).show();
-        } else {    // this guy is serious
+            Toast toast = Toast.makeText(this, "Press back again to exit",
+                    Toast.LENGTH_SHORT);
+            View toastView = toast.getView();
+            assert toastView != null;
+            toastView.setBackgroundResource(R.drawable.toast_bg);
+            TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+            toastMessage.setTextColor(Color.rgb(29, 233, 182));
+            toast.show();
 
+        } else {
             super.onBackPressed();
         }
     }
@@ -135,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-
                         tvCases.setText(jsonObject.getString("cases"));
                         tvRecovered.setText(jsonObject.getString("recovered"));
                         tvCritical.setText(jsonObject.getString("critical"));
@@ -144,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                         tvTotalDeaths.setText(jsonObject.getString("deaths"));
                         tvTodayDeaths.setText(jsonObject.getString("todayDeaths"));
                         tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
-
                         pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
                         pieChart.addPieSlice(new PieModel("Recovered", Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
                         pieChart.addPieSlice(new PieModel("Deaths", Integer.parseInt(tvTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
@@ -155,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                         progress.cancelAnimation();
                         progress.setVisibility(View.GONE);
                         scrollView.setVisibility(View.VISIBLE);
+                        findViewById(R.id.top_stats_view).setVisibility(View.VISIBLE);
                         animation();
                         new Handler().postDelayed(() -> {
                             track.setClickable(true);
@@ -168,32 +175,24 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                         progress.cancelAnimation();
                         progress.setVisibility(View.GONE);
-                        chartIcon.setVisibility(View.VISIBLE);
-                        scrollView.setVisibility(View.VISIBLE);
-                        animation();
-                        new Handler().postDelayed(() -> {
-                            track.setClickable(true);
-                            toastFail();
-                        }, 7000);
-                        topStats.setClickable(true);
-                        botStats.setClickable(true);
-                        chartIcon.setClickable(true);
+                        track.setClickable(false);
+                        toastFail();
                     }
 
 
                 }, error -> {
             progress.cancelAnimation();
             progress.setVisibility(View.GONE);
-            chartIcon.setVisibility(View.VISIBLE);
-            scrollView.setVisibility(View.VISIBLE);
-            Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(() -> {
-                track.setClickable(true);
-                toastFail();
-            }, 7000);
-            topStats.setClickable(true);
-            botStats.setClickable(true);
-            chartIcon.setClickable(true);
+            findViewById(R.id.top_stats_view).setVisibility(View.VISIBLE);
+            Toast toast = Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT);
+            View toastView = toast.getView();
+            assert toastView != null;
+            toastView.setBackgroundResource(R.drawable.toast_bg);
+            TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+            toastMessage.setTextColor(Color.rgb(29, 233, 182));
+            toast.show();
+            track.setClickable(false);
+            toastFail();
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);

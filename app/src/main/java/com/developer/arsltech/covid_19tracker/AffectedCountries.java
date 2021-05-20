@@ -76,6 +76,10 @@ public class AffectedCountries extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+
+                YoYo.with(Techniques.Flash)
+                        .duration(100)
+                        .playOn(findViewById(R.id.edtSearch));
                 myCustomAdapter.getFilter().filter(s);
                 myCustomAdapter.notifyDataSetChanged();
 
@@ -165,7 +169,21 @@ public class AffectedCountries extends AppCompatActivity {
                     .duration(500)
                     .playOn(findViewById(R.id.country));
             findViewById(R.id.country).setVisibility(View.VISIBLE);
-        }, 300);
+        }, 500);
+        new Handler().postDelayed(() ->
+                YoYo.with(Techniques.Shake)
+                        .duration(500)
+                        .playOn(findViewById(R.id.cardViewCountries)), 400);
+        new Handler().postDelayed(() ->
+        {
+            YoYo.with(Techniques.RubberBand)
+                    .duration(500)
+                    .playOn(findViewById(R.id.edtSearch));
+            YoYo.with(Techniques.BounceIn)
+                    .duration(500)
+                    .playOn(findViewById(R.id.search));
+        }, 600);
+
     }
 
 }
