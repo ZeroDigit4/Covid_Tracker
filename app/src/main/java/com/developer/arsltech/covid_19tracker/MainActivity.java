@@ -172,9 +172,20 @@ public class MainActivity extends AppCompatActivity {
                         chartIcon.setClickable(true);
 
                     } catch (JSONException e) {
+
                         e.printStackTrace();
                         progress.cancelAnimation();
                         progress.setVisibility(View.GONE);
+                        findViewById(R.id.top_stats_view).setVisibility(View.GONE);
+                            Toast toast = Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT);
+                            View toastView = toast.getView();
+
+                        assert toastView != null;
+                        toastView.setBackgroundResource(R.drawable.toast_bg);
+                            TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+                            toastMessage.setTextColor(Color.rgb(29, 233, 182));
+                            toast.show();
+
                         track.setClickable(false);
                         toastFail();
                     }
@@ -183,8 +194,8 @@ public class MainActivity extends AppCompatActivity {
                 }, error -> {
             progress.cancelAnimation();
             progress.setVisibility(View.GONE);
-            findViewById(R.id.top_stats_view).setVisibility(View.VISIBLE);
-            Toast toast = Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT);
+            findViewById(R.id.top_stats_view).setVisibility(View.GONE);
+            Toast toast = Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT);
             View toastView = toast.getView();
             assert toastView != null;
             toastView.setBackgroundResource(R.drawable.toast_bg);

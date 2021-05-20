@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="@drawable/dialog_bg">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_fileName="no_internet_connection.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:id="@+id/logo"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1DE9B6"
+        android:text="@string/ooops"
+        android:fontFamily="@font/shojumaru"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1DE9B6"
+        android:text="@string/no_internet_connection"
+        android:textAllCaps="true"
+        android:fontFamily="@font/shojumaru"
+        android:textStyle="bold"
+        />
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btn_try_again"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/try_again"
+        android:textColor="@drawable/dialog_tx_button_bg"
+        android:fontFamily="@font/shojumaru"
+        android:background="@drawable/dialog_button_sel"
+        />
+
+</LinearLayout>
