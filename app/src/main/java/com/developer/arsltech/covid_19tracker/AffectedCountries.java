@@ -76,8 +76,10 @@ public class AffectedCountries extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-
-                YoYo.with(Techniques.Flash)
+                YoYo.with(Techniques.BounceIn)
+                        .duration(500)
+                        .playOn(findViewById(R.id.search));
+                YoYo.with(Techniques.Swing)
                         .duration(100)
                         .playOn(findViewById(R.id.edtSearch));
                 myCustomAdapter.getFilter().filter(s);

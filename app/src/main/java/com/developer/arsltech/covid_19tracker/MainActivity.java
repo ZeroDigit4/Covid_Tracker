@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
             pieChart.clearChart();
             pieChart.setVisibility(View.GONE);
             chartIcon.setVisibility(View.GONE);
+            success.setVisibility(View.GONE);
+            fail.setVisibility(View.GONE);
             scrollView.setVisibility(View.GONE);
             progress.setVisibility(View.VISIBLE);
             fetchData();
