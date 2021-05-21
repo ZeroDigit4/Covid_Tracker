@@ -1,5 +1,9 @@
 package com.developer.arsltech.covid_19tracker;
 
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -9,11 +13,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RemoteViews;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -28,6 +35,8 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Date;
 
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 import pl.droidsonroids.gif.GifDrawable;
@@ -44,12 +53,15 @@ public class MainActivity extends AppCompatActivity {
     Button track;
     Boolean chartToggleBorder = true, statsToggleBorder = true, chartFreeze = false, statsFreeze = false;
     private long backPressedTime = 0;
+    private  NotificationManagerCompat notificationManagerCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        notificationManagerCompat = NotificationManagerCompat.from(this);
         if (Build.VERSION.SDK_INT >= 21) {
+                welcome();
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -81,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         pieChart.setVisibility(View.GONE);
         botStats.setVisibility(View.GONE);
         findViewById(R.id.top_stats_view).setVisibility(View.GONE);
+
+
         track.setClickable(false);
         swipeRefreshLayout = findViewById(R.id.swipe);
         swipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 233, 182));
@@ -116,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
     @Override
     public void onBackPressed() {
         long t = System.currentTimeMillis();
@@ -168,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                         new Handler().postDelayed(() -> {
                             track.setClickable(true);
                             toastSuccess();
+                            notification();
                         }, 7000);
                         topStats.setClickable(true);
                         botStats.setClickable(true);
@@ -755,4 +773,40 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.view8).setVisibility(View.GONE), 1900);
     }
 
+    public void notification(){
+        @SuppressLint("RemoteViewLayout") RemoteViews collapsedView = new RemoteViews(getPackageName(),R.layout.notification_collapsed);
+        @SuppressLint("RemoteViewLayout") RemoteViews expandedView = new RemoteViews(getPackageName(),R.layout.notification_expanded);
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(setId(), PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new NotificationCompat.Builder(this, com.developer.arsltech.covid_19tracker.Notification.CHANNEL_2_ID)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setCustomContentView(collapsedView)
+                .setContentIntent(resultPendingIntent)
+                .setCustomBigContentView(expandedView)
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setColor(Color.rgb(68, 233, 182))
+                .setAutoCancel(true)
+                .build();
+        notificationManagerCompat.notify(setId(),notification);
+    }
+    public void welcome(){
+        @SuppressLint("RemoteViewLayout") RemoteViews collapsedView = new RemoteViews(getPackageName(),R.layout.notification_collapsed);
+        collapsedView.setTextViewText(R.id.tv_collapsed_1, "Welcome to main screen!");
+        collapsedView.setTextViewText(R.id.tv_collapsed_2, "");
+        Notification notification = new NotificationCompat.Builder(this, com.developer.arsltech.covid_19tracker.Notification.CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setCustomContentView(collapsedView)
+                .setTimeoutAfter(300)
+                .setOnlyAlertOnce(true)
+                .setColor(Color.rgb(29, 233, 182))
+                .build();
+        notificationManagerCompat.notify(1,notification);
+
+    }
+
+    private int setId(){
+        return (int) new Date().getTime();
+    }
 }

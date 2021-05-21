@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:gravity="center"
+    android:background="@drawable/dialog_bg">
+    <ImageView
+        android:id="@+id/noti_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/notification_icon"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+        android:layout_width="wrap_content"
+            android:id="@+id/tv_collapsed_1"
+        android:layout_height="wrap_content"
+        android:textColor="#1DE9B6"
+        android:text="@string/new_message"
+            android:layout_gravity="start"
+        style="@style/TextAppearance.Compat.Notification.Title"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_collapsed_2"
+        android:textColor="#1DE9B6"
+        android:text="@string/expand_to_show"
+        android:layout_gravity="end"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        />
+    </LinearLayout>
+    
+
+</LinearLayout>

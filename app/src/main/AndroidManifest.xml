@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Notification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,8 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".AffectedCountries" />
+        <activity android:name=".DetailActivity" android:parentActivityName=".AffectedCountries" />
+        <activity android:name=".AffectedCountries" android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name=".SplashScreen" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".NotificationReveiver"/>
     </application>
 
 </manifest>

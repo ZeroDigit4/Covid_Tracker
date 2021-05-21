@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lMain"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/lMain"
-    android:background="#000000"
-    tools:context=".MainActivity">
+    android:background="#000000">
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -109,7 +110,8 @@
                     android:elevation="11dp"
                     app:lottie_loop="true"
                     app:lottie_autoPlay="true"
-                    app:lottie_fileName="chart_icon.json" />
+                    app:lottie_fileName="chart_icon.json"
+                    tools:ignore="UsingOnClickInXml" />
 
 
                           <org.eazegraph.lib.charts.PieChart
@@ -281,7 +283,8 @@
                     android:onClick="topStatsBorderToggle"
                     app:lottie_autoPlay="true"
                     app:lottie_fileName="top_stats.json"
-                    app:lottie_loop="true" />
+                    app:lottie_loop="true"
+                    tools:ignore="UsingOnClickInXml" />
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/line"
                     android:layout_width="match_parent"
@@ -349,7 +352,8 @@
                         android:layout_marginEnd="-120dp"
                         app:lottie_autoPlay="true"
                         app:lottie_fileName="bot_stats.json"
-                        app:lottie_loop="true" />
+                        app:lottie_loop="true"
+                        tools:ignore="UsingOnClickInXml" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -361,7 +365,8 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="25dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="10dp"
+                        tools:ignore="TooDeepLayout">
 
                         <TextView
                             android:id="@+id/lbCases"
@@ -610,7 +615,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="casual"
                             android:text="@string/_0"
                             android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
@@ -657,7 +662,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="casual"
                             android:text="@string/_0"
                             android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
@@ -703,7 +708,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="casual"
                             android:text="@string/_0"
                             android:paddingEnd="3dp"
                             android:textAlignment="textEnd"
@@ -747,16 +752,17 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:elevation="10dp"
-        android:layout_marginStart="235dp"
+        android:layout_marginStart="229dp"
         app:lottie_autoPlay="true"
         app:lottie_fileName="btn_bg.json"
-        app:lottie_loop="true" />
+        app:lottie_loop="true"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/btnTrack"
         android:maxLines="1"
         android:layout_width="wrap_content"
-        android:paddingEnd="25dp"
+        android:paddingEnd="15dp"
         android:paddingStart="15dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -772,7 +778,8 @@
         android:text="@string/track_countries"
         android:textColor="@drawable/tx_button_sel"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="UsingOnClickInXml" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/line_button"
@@ -782,7 +789,8 @@
         android:elevation="11dp"
         android:layout_marginEnd="100dp"
         android:visibility="gone"
-        app:lottie_fileName="line2.json" />
+        app:lottie_fileName="line2.json"
+        tools:ignore="TooManyViews" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/line_button_bg"
@@ -792,8 +800,10 @@
         android:elevation="11dp"
         android:layout_centerInParent="true"
         android:visibility="gone"
-        app:lottie_fileName="line_2.json" />
+        app:lottie_fileName="line_2.json"
+        tools:ignore="TooManyViews" />
 
 
 
 </RelativeLayout>
+

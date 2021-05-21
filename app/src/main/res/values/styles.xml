@@ -1,25 +1,31 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#7CCCA5</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="fontFamily">casual</item>
         <item name="titleTextColor">#000000</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@style/TextAppearance.AppCompat">
+        <item name="fontFamily">@font/advent_pro_bold</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+
         <style name="AppTheme.NoActionBar">
             <item name="windowActionBar">false</item>
             <item name="windowNoTitle">true</item>
-            <item name="fontFamily">@font/shojumaru</item>
             <item name="android:windowDrawsSystemBarBackgrounds">true</item>
             <item name="android:statusBarColor">#000000</item>
         </style>
     <style name="toastTextStyle" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/bangers</item>
     </style>
+
+
 
 </resources>

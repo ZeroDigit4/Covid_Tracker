@@ -53,6 +53,7 @@
             android:hint="@string/search"
             android:inputType="textVisiblePassword|textNoSuggestions"
             android:maxLines="1"
+            android:imeOptions="actionSearch"
             android:background="@drawable/text_bg"
             android:singleLine="true"
             android:textColor="#00FFBF"

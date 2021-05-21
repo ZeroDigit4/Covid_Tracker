@@ -1,5 +1,7 @@
 package com.developer.arsltech.covid_19tracker;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,13 +10,18 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +33,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -66,6 +74,14 @@ public class AffectedCountries extends AppCompatActivity {
 
         listView.setOnItemClickListener((parent, view, position, id) -> startActivity(new Intent(getApplicationContext(),DetailActivity.class).putExtra("position",position)));
 
+        closeKeyboard2(findViewById(R.id.lCountries));
+        edtSearch.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                closeKeyboard();
+                return true;
+            }
+            return false;
+        });
 
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -186,6 +202,38 @@ public class AffectedCountries extends AppCompatActivity {
                     .playOn(findViewById(R.id.search));
         }, 600);
 
+    }
+    private void closeKeyboard()
+    {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager manager
+                    = (InputMethodManager)
+                    getSystemService(
+                            Context.INPUT_METHOD_SERVICE);
+            manager
+                    .hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
+        }
+    }
+    @SuppressLint("ClickableViewAccessibility")
+    public void closeKeyboard2(View view) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener((v, event) -> {
+                closeKeyboard();
+                return false;
+            });
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                closeKeyboard2(innerView);
+            }
+        }
     }
 
 }

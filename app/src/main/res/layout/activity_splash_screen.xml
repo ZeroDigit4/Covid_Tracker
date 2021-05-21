@@ -52,11 +52,5 @@
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
         app:lottie_fileName="splash.json"/>
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/internet_check"
-        android:layout_centerInParent="true">
-    </WebView>
 
 </RelativeLayout>
